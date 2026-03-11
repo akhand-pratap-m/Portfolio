@@ -1,0 +1,192 @@
+/* ==========================================================================
+   Cyber-Engineering Variables & Reset
+   ========================================================================== */
+:root {
+    --bg-dark: #0d1117;          /* Deep Graphite */
+    --surface: rgba(22, 27, 34, 0.85); /* Steel Surface */
+    --accent: #58a6ff;           /* Electric Blue */
+    --accent-secondary: #3fb950; /* Phosphor Green */
+    --text-main: #c9d1d9;        /* Light Silver */
+    --text-muted: #8b949e;       /* Dim Grey */
+    --font-stack: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; 
+}
+
+/* ==========================================================================
+   Body & Technical Background Overlay
+   ========================================================================== */
+body {
+    font-family: var(--font-stack);
+    background-color: var(--bg-dark); 
+    color: var(--text-main);
+    font-size: 17px; 
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Background Logic: Static Circuit Image [cite: 52] */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background-image: url('esp32-removebg-preview.png'); 
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 40%;
+    opacity: 0.12; 
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   Navbar & Branding [cite: 16]
+   ========================================================================== */
+.navbar {
+    position: fixed;
+    top: 0; width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 10%;
+    background-color: rgba(13, 17, 23, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.logo { font-size: 1.5rem; font-weight: 700; color: #fff; }
+.logo span { color: var(--accent); }
+
+.nav-links { display: flex; list-style: none; gap: 2rem; }
+.nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+.nav-links a:hover { color: var(--accent); }
+
+.btn-download {
+    background-color: var(--accent);
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   Hero Section 
+   ========================================================================== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 0 10%;
+    background: radial-gradient(circle at top right, rgba(88, 166, 255, 0.1) 0%, rgba(13, 17, 23, 1) 60%);
+}
+
+.hero-content h1 { font-size: 3.8rem; margin-bottom: 0.5rem; color: #fff; }
+.hero-content h2 { font-size: 1.6rem; color: var(--accent-secondary); margin-bottom: 1.5rem; }
+
+/* ==========================================================================
+   Grid System & Cards (Fixes Overlapping Tags) [cite: 19, 21]
+   ========================================================================== */
+.section { padding: 5rem 10%; max-width: 1400px; margin: 0 auto; }
+.section-title { font-size: 2rem; margin-bottom: 2.5rem; color: var(--accent); }
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background-color: var(--surface);
+    backdrop-filter: blur(12px); 
+    border-radius: 8px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: 0.3s ease;
+}
+
+.card:hover { border-color: var(--accent); transform: translateY(-5px); }
+
+/* Technical Skills Tags Logic [cite: 20, 21] */
+.tags {
+    display: flex;
+    flex-wrap: wrap; /* Prevents overflow [cite: 19] */
+    gap: 0.6rem;
+}
+
+.tags span {
+    background-color: rgba(63, 185, 80, 0.08);
+    color: var(--accent-secondary);
+    border: 1px solid rgba(63, 185, 80, 0.2);
+    padding: 0.4rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    white-space: nowrap; /* Ensures skill name stays on one line */
+}
+
+/* ==========================================================================
+   Contact Cards & Full Name Display [cite: 16, 17, 18]
+   ========================================================================== */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.contact-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-main);
+    padding: 3rem 1.5rem !important;
+    overflow: hidden; /* Fixes text spillage  */
+}
+
+.contact-card h3 { color: #fff; margin-bottom: 0.5rem; font-size: 1.2rem; }
+
+.contact-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    word-break: break-all; /* Handles long emails  */
+}
+
+.icon-box { margin-bottom: 1.5rem; color: var(--accent); }
+
+.contact-card:hover { background: rgba(88, 166, 255, 0.05); }
+.contact-card:hover .icon-box { color: var(--accent-secondary); transform: scale(1.1); }
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+footer {
+    text-align: center;
+    padding: 3rem;
+    background: #090c10;
+    color: var(--text-muted);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+@media (max-width: 992px) {
+    .hero-content h1 { font-size: 2.8rem; }
+    .nav-links { display: none; }
+}
